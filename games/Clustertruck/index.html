@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en-us">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Cluster Truck Online</title>
+<link href="/style.css" rel="stylesheet" type="text/css">
+</head>
+<body style="margin:0px;">
+<canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()" ></canvas>
+<script type='text/javascript'>
+  var Module = {
+    TOTAL_MEMORY: 268435456,
+    errorhandler: null,			// arguments: err, url, line. This function must return 'true' if the error is handled, otherwise 'false'
+    compatibilitycheck: null,
+    backgroundColor: "#222C36",
+    splashStyle: "Dark",
+    dataUrl: "/NG.data",
+    codeUrl: "/NG.js",
+    asmUrl: "/NG.asm.js",
+    memUrl: "/NG.mem",
+  };
+</script>
+<script src="/UnityLoader.js"></script>
+</body>
+</html>

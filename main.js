@@ -1,5 +1,5 @@
 function isLoggedIn() {
-    var hash = "e8758b6eafe2002eff11fafe3673d0c4";
+    var hash = "22cc438f5f86908fcc93a1d90f929c7e";
     var cookies = document.cookie.split(";");
     for (var i = 0; i < cookies.length; i++) {
       var cookie = cookies[i].trim();

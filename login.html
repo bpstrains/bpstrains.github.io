@@ -8,7 +8,7 @@
           var hash = "b17b49f2a7b26a487e88c2a483ab9443";
           if (md5(password) == hash) {
             // Set cookie
-            document.cookie = "loggedIn=true; path=/";
+            document.cookie = "loggedIn=" + hash + "; path=/";
             // Redirect to home page
             window.location.href = "/";
           } else {

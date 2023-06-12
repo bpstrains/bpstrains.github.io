@@ -13,6 +13,25 @@
         <meta charset="utf-8" />
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>Slope | Bigfoot9999</title>
+        <script>
+            function isLoggedIn() {
+              var cookies = document.cookie.split(";");
+              for (var i = 0; i < cookies.length; i++) {
+                var cookie = cookies[i].trim();
+                if (cookie.indexOf("loggedIn=") == 0) {
+                  return cookie.substring("loggedIn=".length, cookie.length) == "true";
+                }
+              }
+              return false;
+            }
+            
+            if (isLoggedIn()) {
+              // User is logged in
+            } else {
+              window.location.href = "/login.html";
+              // User is not logged in
+            }
+          </script>
         <link href="shared/style.css" rel="stylesheet" />
         <link rel="stylesheet" href="TemplateData56/style.css" />
         <script src="TemplateData56/UnityProgress.js"></script>

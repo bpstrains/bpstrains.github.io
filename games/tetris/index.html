@@ -7,25 +7,7 @@
 
     <script src="cookie.js"></script>
     <script src="gameControls.js"></script>
-	<script>
-        function isLoggedIn() {
-          var cookies = document.cookie.split(";");
-          for (var i = 0; i < cookies.length; i++) {
-            var cookie = cookies[i].trim();
-            if (cookie.indexOf("loggedIn=") == 0) {
-              return cookie.substring("loggedIn=".length, cookie.length) == "true";
-            }
-          }
-          return false;
-        }
-        
-        if (isLoggedIn()) {
-          // User is logged in
-        } else {
-          window.location.href = "/login.html";
-          // User is not logged in
-        }
-      </script>
+	<script src="/main.js"></script>
     <script src="jawsjs.js"></script>
     <script src="Block.js"></script>
     <script src="Shapes.js"></script>

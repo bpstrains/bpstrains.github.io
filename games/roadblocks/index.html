@@ -3,25 +3,7 @@
 <head>
 <meta charset="utf-8">
 <title>ROADBLOCKS</title>
-<script>
-    function isLoggedIn() {
-      var cookies = document.cookie.split(";");
-      for (var i = 0; i < cookies.length; i++) {
-        var cookie = cookies[i].trim();
-        if (cookie.indexOf("loggedIn=") == 0) {
-          return cookie.substring("loggedIn=".length, cookie.length) == "true";
-        }
-      }
-      return false;
-    }
-    
-    if (isLoggedIn()) {
-      // User is logged in
-    } else {
-      window.location.href = "/login.html";
-      // User is not logged in
-    }
-  </script>
+<script src="/main.js"></script>
 <meta name="viewport" content="minimal-ui, width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <style type="text/css">@import url(style.css);</style>
 <script src="index.js" defer></script>

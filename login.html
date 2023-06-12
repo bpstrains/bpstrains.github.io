@@ -2,25 +2,7 @@
 <html>
   <head>
     <title>Password Check</title>
-    <script>
-        function checkPassword() {
-          var password = document.getElementById("password").value;
-          var hash = "b17b49f2a7b26a487e88c2a483ab9443";
-          if (md5(password) == hash) {
-            // Set cookie
-            document.cookie = "loggedIn=true; path=/";
-            // Redirect to home page
-            window.location.href = "/";
-          } else {
-            alert("Password is incorrect!");
-          }
-        }
-         // MD5 hashing function
-        function md5(str) {
-          var md5Hash = CryptoJS.MD5(str);
-          return md5Hash.toString();
-        }
-    </script>
+    <script src="/main.js"></script>
   </head>
   <body>
     <h1>Password Check</h1>

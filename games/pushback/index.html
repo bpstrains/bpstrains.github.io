@@ -1,22 +1,4 @@
-<!DOCTYPE html><head><script>
-  function isLoggedIn() {
-    var cookies = document.cookie.split(";");
-    for (var i = 0; i < cookies.length; i++) {
-      var cookie = cookies[i].trim();
-      if (cookie.indexOf("loggedIn=") == 0) {
-        return cookie.substring("loggedIn=".length, cookie.length) == "true";
-      }
-    }
-    return false;
-  }
-  
-  if (isLoggedIn()) {
-    // User is logged in
-  } else {
-    window.location.href = "/login.html";
-    // User is not logged in
-  }
-</script><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="s.css"><!-- Google tag (gtag.js) -->
+<!DOCTYPE html><head>    <script src="/main.js"></script><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="s.css"><!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-P6V3QXEWMB"></script>
 <script>
   window.dataLayer = window.dataLayer || [];

@@ -12,7 +12,7 @@
     }
     return loggedInValues;
   }
-   var expectedValues = ["5f4dcc3b5aa765d61d8327deb882cf99", "afa20819b4b790897551a81247dca3f4", "a8838031cf336a2b359d770d84e48680", "6eea9b7ef19179a06954edd0f6c05ceb", "332532dcfaa1cbf61e2a266bd723612c", "72b302bf297a228a75730123efef7c41", "65e2fdfe97fa0e064b1cc5a12d0ab037", "85b9233f3ef5a12c7a0a6b76ae06986d" ];
+   var expectedValues = ["5f4dcc3b5aa765d61d8327deb882cf99", "afa20819b4b790897551a81247dca3f4", "a8838031cf336a2b359d770d84e48680", "6eea9b7ef19179a06954edd0f6c05ceb", "332532dcfaa1cbf61e2a266bd723612c", "72b302bf297a228a75730123efef7c41", "65e2fdfe97fa0e064b1cc5a12d0ab037", "85b9233f3ef5a12c7a0a6b76ae06986d", "d77ef6519e2c41b142e75a58db3d63bd" ];
   var loggedInValues = checkLoggedIn();
    if (loggedInValues.some(value => expectedValues.includes(value))) {
   } else {

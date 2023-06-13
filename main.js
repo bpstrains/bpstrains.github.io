@@ -12,7 +12,7 @@
     }
     return loggedInValues;
   }
-   var expectedValues = ["5f4dcc3b5aa765d61d8327deb882cf99", "afa20819b4b790897551a81247dca3f4", "a8838031cf336a2b359d770d84e48680", "6eea9b7ef19179a06954edd0f6c05ceb", "332532dcfaa1cbf61e2a266bd723612c" ];
+   var expectedValues = ["5f4dcc3b5aa765d61d8327deb882cf99", "afa20819b4b790897551a81247dca3f4", "a8838031cf336a2b359d770d84e48680", "6eea9b7ef19179a06954edd0f6c05ceb", "332532dcfaa1cbf61e2a266bd723612c", "72b302bf297a228a75730123efef7c41" ];
   var loggedInValues = checkLoggedIn();
    if (loggedInValues.some(value => expectedValues.includes(value))) {
   } else {

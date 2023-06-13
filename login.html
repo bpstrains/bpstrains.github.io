@@ -5,14 +5,29 @@
     <script>
         function checkPassword() {
           var password = document.getElementById("password").value;
-          var hash = "a11b0f4ee42a8e6f7c5d001a68c1f2a5";
-          if (md5(password) == hash) {
+          var username = document.getElementById("username").value;
+          var users = [
+            {username: "bpstrains", hash: "5f4dcc3b5aa765d61d8327deb882cf99"},
+            {username: "enf2023", hash: "afa20819b4b790897551a81247dca3f4"},
+            {username: "#happyfeet", hash: "a8838031cf336a2b359d770d84e48680"},
+            {username: "", hash: ""},
+            {username: "", hash: ""}
+          ];
+          var found = false;
+           for (var i = 0; i < users.length; i++) {
+            if (username == users[i].username && md5(password) == users[i].hash) {
+              found = true;
+              var user = i
+              break;
+            }
+          }
+          if (found) {
             // Set cookie
-            document.cookie = "loggedIn=" + hash + "; path=/";
+            document.cookie = "loggedIn=" + users[user].hash + "; path=/";
             // Redirect to home page
             window.location.href = "/";
           } else {
-            alert("Password is incorrect!");
+            alert("Credentials don't match!");
           }
         }
          // MD5 hashing function
@@ -23,11 +38,15 @@
     </script>
   </head>
   <body>
-    <h1>Password Check</h1>
-     <label for="password">Enter Password:</label>
+    <h1>Login</h1>
+    <label for="username">Username:</label>
+    <input type="username" id="username" name="username" />
+    <br>
+    <label for="password">Password:</label>
     <input type="password" id="password" name="password" />
-     <button onclick="checkPassword()">Check Password</button>
-     <!-- Include CryptoJS library for MD5 hashing -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <br>
+    <button onclick="checkPassword()">Login</button>
+    <!-- Include CryptoJS library for MD5 hashing -->
+    <script src="/crypto.min.js"></script>
   </body>
 </html>

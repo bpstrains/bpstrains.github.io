@@ -1,20 +1,22 @@
-function isLoggedIn() {
-    var hash = "a11b0f4ee42a8e6f7c5d001a68c1f2a5";
-    var cookies = document.cookie.split(";");
-    for (var i = 0; i < cookies.length; i++) {
-      var cookie = cookies[i].trim();
-      if (cookie.indexOf("loggedIn=") == 0) {
-        return cookie.substring("loggedIn=".length, cookie.length) == hash;
+  function checkLoggedIn() {
+    var cookie = document.cookie;
+    var loggedInValues = [];
+    if (cookie.includes("loggedIn")) {
+      var cookieArray = cookie.split(';');
+      for (var i = 0; i < cookieArray.length; i++) {
+        var cookieItem = cookieArray[i].trim();
+        if (cookieItem.indexOf("loggedIn=") == 0) {
+          loggedInValues.push(cookieItem.substring("loggedIn=".length, cookieItem.length));
+        }
       }
     }
-    return false;
+    return loggedInValues;
   }
-  
-  if (isLoggedIn()) {
-    // User is logged in
+   var expectedValues = ["5f4dcc3b5aa765d61d8327deb882cf99", "afa20819b4b790897551a81247dca3f4", "a8838031cf336a2b359d770d84e48680", "", "" ];
+  var loggedInValues = checkLoggedIn();
+   if (loggedInValues.some(value => expectedValues.includes(value))) {
   } else {
     window.location.href = "/login.html";
-    // User is not logged in
   }
 // Refresh Rate is how often you want to refresh the page 
 // bassed off the user inactivity. 

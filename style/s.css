@@ -4,4 +4,4 @@ p {font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: 20px;}
 a {font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: 20px; visibility: hidden;}
 body {background-color: #c1c1ff;}
 li {color: #c1c1ff;}
-p.hidden {color: #c1c1ff; visibility: hidden;}
+.hidden {color: #c1c1ff; visibility: hidden;}

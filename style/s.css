@@ -1,7 +1,5 @@
 h1 {font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: 50px;}
 h3 {font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: 30px;}
 p {font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: 20px;}
-a {font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: 20px; visibility: hidden;}
+a {font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: 20px;}
 body {background-color: #c1c1ff;}
-li {color: #c1c1ff;}
-.hidden {color: #c1c1ff; visibility: hidden;}

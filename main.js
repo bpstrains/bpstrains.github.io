@@ -1,75 +1,96 @@
-  function checkLoggedIn() {
-    var cookie = document.cookie;
-    var loggedInValues = [];
-    if (cookie.includes("loggedIn")) {
-      var cookieArray = cookie.split(';');
-      for (var i = 0; i < cookieArray.length; i++) {
-        var cookieItem = cookieArray[i].trim();
-        if (cookieItem.indexOf("loggedIn=") == 0) {
-          loggedInValues.push(cookieItem.substring("loggedIn=".length, cookieItem.length));
-        }
+let users = [];
+
+// Check if the environment is offline or online
+const isOffline = !navigator.onLine;
+
+if (isOffline) {
+  // Offline environment, fetch local users.json
+  fetch('users.json')
+    .then(response => response.json())
+    .then(data => {
+      users = data;
+      var loggedInValues = checkLoggedIn();
+      if (loggedInValues.some(value => users.some(user => user.hash === value))) {
+        // User is logged in
+      } else {
+        window.location.href = "/login.html";
+      }
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+} else {
+  // Online environment, fetch remote users.json
+  fetch('https://bpscdn.pages.dev/users.json')
+    .then(response => response.json())
+    .then(data => {
+      users = data;
+      var loggedInValues = checkLoggedIn();
+      if (loggedInValues.some(value => users.some(user => user.hash === value))) {
+        // User is logged in
+      } else {
+        window.location.href = "/login.html";
+      }
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+}
+
+function checkLoggedIn() {
+  var cookie = document.cookie;
+  var loggedInValues = [];
+  if (cookie.includes("loggedIn")) {
+    var cookieArray = cookie.split(';');
+    for (var i = 0; i < cookieArray.length; i++) {
+      var cookieItem = cookieArray[i].trim();
+      if (cookieItem.indexOf("loggedIn=") == 0) {
+        loggedInValues.push(cookieItem.substring("loggedIn=".length, cookieItem.length));
       }
     }
-    return loggedInValues;
   }
-   var expectedValues = ["5f4dcc3b5aa765d61d8327deb882cf99", "afa20819b4b790897551a81247dca3f4", "a8838031cf336a2b359d770d84e48680", "6eea9b7ef19179a06954edd0f6c05ceb", "332532dcfaa1cbf61e2a266bd723612c", "72b302bf297a228a75730123efef7c41", "65e2fdfe97fa0e064b1cc5a12d0ab037", "85b9233f3ef5a12c7a0a6b76ae06986d", "d77ef6519e2c41b142e75a58db3d63bd", "c010192c0d97eaf93d2318c51eb2eed7",
-   "5b48330d2e76b6f08ad58602893424ac", "f7afbfc6cb4f19459f35d7bd9e3831a8", "e10adc3949ba59abbe56e057f20f883e" ];
-  var loggedInValues = checkLoggedIn();
-   if (loggedInValues.some(value => expectedValues.includes(value))) {
-  } else {
-    window.location.href = "/login.html";
-  }
-// Refresh Rate is how often you want to refresh the page 
-// bassed off the user inactivity. 
-var refresh_rate = 60; //<-- In seconds, change to your needs
-var last_user_action = 0;
-var has_focus = false;
-var lost_focus_count = 0;
-// If the user loses focus on the browser to many times 
-// we want to refresh anyway even if they are typing. 
-// This is so we don't get the browser locked into 
-// a state where the refresh never happens.    
-var focus_margin = 10; 
-
-// Reset the Timer on users last action
-function reset() {
-    last_user_action = 0;
-    console.log("Reset");
+  return loggedInValues;
 }
-
-function windowHasFocus() {
-    has_focus = true;
-}
-
-function windowLostFocus() {
-    has_focus = false;
-    lost_focus_count++;
-    console.log(lost_focus_count + " <~ Lost Focus");
-}
-
-// Count Down that executes ever second
-setInterval(function () {
-    last_user_action++;
-    refreshCheck();
-}, 1000);
-
-// The code that checks if the window needs to reload
-function refreshCheck() {
-    var focus = window.onfocus;
-    if ((last_user_action >= refresh_rate && !has_focus && document.readyState == "complete") || lost_focus_count > focus_margin) {
-        window.location.reload(); // If this is called no reset is needed
-        reset(); // We want to reset just to make sure the location reload is not called.
+function checkLoggedIn() {
+  var cookie = document.cookie;
+  var loggedInValues = [];
+  if (cookie.includes("loggedIn")) {
+    var cookieArray = cookie.split(';');
+    for (var i = 0; i < cookieArray.length; i++) {
+      var cookieItem = cookieArray[i].trim();
+      if (cookieItem.indexOf("loggedIn=") == 0) {
+        loggedInValues.push(cookieItem.substring("loggedIn=".length, cookieItem.length));
+      }
     }
-
+  }
+  return loggedInValues;
 }
-window.addEventListener("focus", windowHasFocus, false);
-window.addEventListener("blur", windowLostFocus, false);
-window.addEventListener("click", reset, false);
-window.addEventListener("mousemove", reset, false);
-window.addEventListener("keypress", reset, false);
-window.addEventListener("keydown", reset, false);
-window.addEventListener("keyup", reset, false);
-window.addEventListener("offline", reset, false);
-window.addEventListener("scroll", reset, false);
-document.addEventListener("touchMove", reset, false);
-document.addEventListener("touchEnd", reset, false);
+
+
+const activityCheckInterval = 30000; // 30 seconds
+
+let isUserActive = true; // Assume user is initially active
+
+// Function to check if the user is active
+function checkUserActivity() {
+  isUserActive = true; // Set user as active when this function is called
+}
+
+// Function to refresh the page
+function refreshPage() {
+  if (navigator.onLine && !isUserActive) {
+    location.reload(); // Reload the page when user is not active and connected to the internet
+  } else {
+    isUserActive = false; // Reset user activity status
+  }
+}
+
+// Event listeners for user activity
+document.addEventListener("mousemove", checkUserActivity);
+document.addEventListener("keydown", checkUserActivity);
+
+// Start checking user activity at a specified interval
+setInterval(refreshPage, activityCheckInterval);
+function deleteCookie() {
+  document.cookie = "loggedIn=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+}

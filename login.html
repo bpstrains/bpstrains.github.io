@@ -1,60 +1,18 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Password Check</title>
-    <script>
-        function checkPassword() {
-          var password = document.getElementById("password").value;
-          var username = document.getElementById("username").value;
-          var users = [
-            {username: "bpstrains", hash: "5f4dcc3b5aa765d61d8327deb882cf99"},
-            {username: "enf2023", hash: "afa20819b4b790897551a81247dca3f4"},
-            {username: "#happyfeet", hash: "a8838031cf336a2b359d770d84e48680"},
-            {username: "kyndarr", hash: "6eea9b7ef19179a06954edd0f6c05ceb"},
-            {username: "sam", hash: "332532dcfaa1cbf61e2a266bd723612c"},
-            {username: "yellowbanana", hash: "72b302bf297a228a75730123efef7c41"},
-            {username: "Hamsterf", hash: "65e2fdfe97fa0e064b1cc5a12d0ab037"},
-            {username: "Jangolando", hash: "85b9233f3ef5a12c7a0a6b76ae06986d"},
-            {username: "bananasgeorg", hash: "d77ef6519e2c41b142e75a58db3d63bd"},
-            {username: "cologne", hash: "c010192c0d97eaf93d2318c51eb2eed7"},
-            {username: "2468", hash: "5b48330d2e76b6f08ad58602893424ac"},
-            {username: "1237", hash: "f7afbfc6cb4f19459f35d7bd9e3831a8"},
-            {username: "highawe", hash: "e10adc3949ba59abbe56e057f20f883e"}
-          ];
-          var found = false;
-           for (var i = 0; i < users.length; i++) {
-            if (username == users[i].username && md5(password) == users[i].hash) {
-              found = true;
-              var user = i
-              break;
-            }
-          }
-          if (found) {
-            // Set cookie
-            document.cookie = "loggedIn=" + users[user].hash + "; path=/";
-            // Redirect to home page
-            window.location.href = "/";
-          } else {
-            alert("Credentials don't match!");
-          }
-        }
-         // MD5 hashing function
-        function md5(str) {
-          var md5Hash = CryptoJS.MD5(str);
-          return md5Hash.toString();
-        }
-    </script>
-  </head>
-  <body>
-    <h1>Login</h1>
-    <label for="username">Username:</label>
-    <input type="username" id="username" name="username" />
-    <br>
-    <label for="password">Password:</label>
-    <input type="password" id="password" name="password" />
-    <br>
-    <button onclick="checkPassword()">Login</button>
-    <!-- Include CryptoJS library for MD5 hashing -->
-    <script src="/crypto.min.js"></script>
-  </body>
+<head>
+    <title>Login</title>
+    <link href="/style/water.css" rel="stylesheet" />
+</head>
+<body>
+    <form action="passcheck.html" method="GET">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username"><br><br>
+        
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password"><br><br>
+        
+        <input type="submit" value="Login">
+    </form>
+</body>
 </html>

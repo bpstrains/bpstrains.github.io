@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Password Check</title>
+    <link href="/style/water.css" rel="stylesheet" />
+    <script src="/crypto.min.js"></script>
+    <script>
+        let users = [];
+        fetch('users.json')
+            .then(response => response.json())
+            .then(data => {
+                users = data;
+                checkPassword(users); // Pass the users array as a parameter
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+
+        function checkPassword(users) { // Receive the users array as a parameter
+            var urlParams = new URLSearchParams(window.location.search);
+            var username = urlParams.get('username');
+            var password = urlParams.get('password');
+            var found = false;
+            var user;
+            for (var i = 0; i < users.length; i++) {
+                if (username === users[i].username && md5(password) === users[i].hash) {
+                    found = true;
+                    user = i;
+                    break;
+                }
+            }
+            if (found) {
+                // Set cookie
+                document.cookie = "loggedIn=" + users[user].hash + "; path=/";
+                // Redirect to home page
+                window.location.href = "/";
+            } else {
+                window.location.href = "/";
+            }
+        }
+
+        function md5(str) {
+            var md5Hash = CryptoJS.MD5(str);
+            return md5Hash.toString();
+        }
+    </script>
+  </head>
+  <body>
+    <h1>Logging In...</h1>
+  </body>
+</html>

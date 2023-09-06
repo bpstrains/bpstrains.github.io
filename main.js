@@ -51,21 +51,6 @@ function checkLoggedIn() {
   }
   return loggedInValues;
 }
-function checkLoggedIn() {
-  var cookie = document.cookie;
-  var loggedInValues = [];
-  if (cookie.includes("loggedIn")) {
-    var cookieArray = cookie.split(';');
-    for (var i = 0; i < cookieArray.length; i++) {
-      var cookieItem = cookieArray[i].trim();
-      if (cookieItem.indexOf("loggedIn=") == 0) {
-        loggedInValues.push(cookieItem.substring("loggedIn=".length, cookieItem.length));
-      }
-    }
-  }
-  return loggedInValues;
-}
-
 
 const activityCheckInterval = 30000; // 30 seconds
 

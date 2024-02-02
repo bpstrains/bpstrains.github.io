@@ -2,7 +2,18 @@
 <html lang="en">
 
 <head>
-  <script src="/main.js"></script>
+  <script>
+        document.onreadystatechange = function () {
+        var state = document.readyState
+        if (state == 'interactive') {
+             document.body.style.visibility="hidden";
+        } else if (state == 'complete') {
+            setTimeout(function(){
+               document.body.style.visibility="visible";
+            },1000);
+        }}
+    </script>
+    <script src="/main.js"></script>
      <link rel="icon" sizes="192x192" href="img/favicon.png">
  <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon"/>
  <link rel="apple-touch-icon" href="img/favicon.png" type="image/x-icon"/>
@@ -68,7 +79,7 @@
     </style>
 </head>
 
-<body>
+<body style="visibility: hidden;">
     <div algin="center" class="gm4html5" id="gm4html5">
         <!-- Create the canvas element the game draws to -->
         <canvas id="canvas" width="1024" height="768">

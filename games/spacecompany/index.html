@@ -1,7 +1,18 @@
 <!DOCTYPE html>
 <html style="height:100%">
 <head>
-	<script src="/main.js"></script>
+	<script>
+        document.onreadystatechange = function () {
+        var state = document.readyState
+        if (state == 'interactive') {
+             document.body.style.visibility="hidden";
+        } else if (state == 'complete') {
+            setTimeout(function(){
+               document.body.style.visibility="visible";
+            },1000);
+        }}
+    </script>
+    <script src="/main.js"></script>
 	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Space Company</title>
@@ -77,8 +88,8 @@
 						Energy Deficit!
 					</span>
 				</a>
-				<a class="navbar-brand pointer" target="_blank" href="http://discord.gg/hgRUjVp">
-					<span class="text-muted small">Join our Discord!</span>
+				<a class="navbar-brand pointer" href='javascript:var DELAY = 1;var autoClickerStyleElement = document.createElement("style");autoClickerStyleElement.innerHTML="*{cursor: crosshair !important;}";document.body.appendChild(autoClickerStyleElement);function addClicker(e) {if(!e.isTrusted) {return;}if(e.target.classList.contains("auto-clicker-target")) {e.target.classList.remove("auto-clicker-target");} else {e.target.classList.add("auto-clicker-target");}document.body.removeChild(autoClickerStyleElement);document.body.removeEventListener("click", addClicker);e.preventDefault();autoClick(e.target);}function autoClick(element) {if(element.classList.contains("auto-clicker-target")) {element.click();setTimeout(function(){ autoClick(element); }, DELAY);}}document.body.addEventListener("click", addClicker, 1);'>
+					<span class="text-muted small">Autoclicker(Not an official part of the game)</span>
 				</a>
 				<div class="pull-right" style="width:200px;">
 					<a class="navbar-brand">

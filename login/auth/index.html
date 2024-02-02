@@ -2,15 +2,16 @@
 <html>
   <head>
     <title>Password Check</title>
-    <link href="/style/water.css" rel="stylesheet" />
+    <link href="/style/s.css" rel="stylesheet" />
     <script src="/crypto.min.js"></script>
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <script>
         let users = [];
-        fetch('users.json')
+        fetch('https://bpscdn.pages.dev/users.json')
             .then(response => response.json())
             .then(data => {
                 users = data;
+                deleteCookie();
                 checkPassword(users); // Pass the users array as a parameter
             })
             .catch(error => {
@@ -32,17 +33,20 @@
             }
             if (found) {
                 // Set cookie
-                document.cookie = "loggedIn=" + users[user].hash + "; path=/";
+                document.cookie = "loggedIn=" + users[user].hash + "; path=/; secure=true; samesite=none";
                 // Redirect to home page
                 window.location.href = "/";
             } else {
-                window.location.href = "/";
+                window.location.href = "/login/";
             }
         }
 
         function md5(str) {
             var md5Hash = CryptoJS.MD5(str);
             return md5Hash.toString();
+        }
+        function deleteCookie() {
+        document.cookie = "loggedIn=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
         }
     </script>
   </head>

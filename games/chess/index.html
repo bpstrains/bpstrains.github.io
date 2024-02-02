@@ -1,7 +1,18 @@
 <!doctype html>
 <html>
 <head>
-	<script src="/main.js"></script>
+	<script>
+        document.onreadystatechange = function () {
+        var state = document.readyState
+        if (state == 'interactive') {
+             document.body.style.visibility="hidden";
+        } else if (state == 'complete') {
+            setTimeout(function(){
+               document.body.style.visibility="visible";
+            },1000);
+        }}
+    </script>
+    <script src="/main.js"></script>rc="/main.js"></script>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
 <script type="text/ecmascript" src="common/xhr.js"></script>
 <script type="text/ecmascript" src="chess.js"></script>

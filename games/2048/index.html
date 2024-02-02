@@ -4,7 +4,18 @@
 <head>
   <meta charset="utf-8">
   <title>2048</title>
-  <script src="/main.js"></script>
+  <script>
+        document.onreadystatechange = function () {
+        var state = document.readyState
+        if (state == 'interactive') {
+             document.body.style.visibility="hidden";
+        } else if (state == 'complete') {
+            setTimeout(function(){
+               document.body.style.visibility="visible";
+            },1000);
+        }}
+    </script>
+    <script src="/main.js"></script>
   <link href="style/main.css" rel="stylesheet" type="text/css">
   <link rel="shortcut icon" href="favicon.ico">
   <link rel="apple-touch-icon" href="meta/apple-touch-icon.png">
@@ -30,7 +41,7 @@
         channel: '1035597205354057789' // #school
     })
 </script>
-<body>
+<body style="visibility: hidden;">
   <div class="container">
     <div class="heading">
       <h1 class="title">2048</h1>

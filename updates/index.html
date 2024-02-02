@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        document.onreadystatechange = function () {
+        var state = document.readyState
+        if (state == 'interactive') {
+             document.body.style.visibility="hidden";
+        } else if (state == 'complete') {
+            setTimeout(function(){
+               document.body.style.visibility="visible";
+            },1000);
+        }}
+      </script>
+      <link href="/style/s.css" rel="stylesheet" />
+      <script src="/main.js"></script>
+      <link rel="icon" type="image/x-icon" href="/favicon.ico">
+      <title>Updates</title>
+</head>
+<body style="visibility: hidden;">
+    <div>
+        <header>
+            <a class="sitename" href="/">BPSTrains</a>
+            <nav>
+                <ul class="nav_links">
+                    <li><a href="/games/">Games</a></li>
+                    <li><a href="/about-blank/">about:blank</a></li>
+                    <li><a href="/updates/">Updates</a></li>
+                    <li><a href="/issues/">Issues</a></li>
+                    <li><a href="/contact/">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+        <h1>Updates</h1>
+        <h3>2/2/24 Update</h3>
+        <ul>
+            <li>Added a header.</li>
+            <li>Made footer stay at the bottom of the page.</li>
+            <li>Fixed signup requesting wrong file.</li>
+            <li>Deleted Bookmarklets page.</li>
+            <li>Added Contact, All Pages, Issues, Updates, and about:blank pages.</li>
+            <li>Used folders to create a better file directory.</li>
+            <li>Dynamic issues, they will be recorded on the BPS-CDN.</li>
+        </ul>
+        <h3>Undocumented Changes</h3>
+        <ul>
+            <li>After 60 seconds of inactivity the page will refresh, but only when user is connected to internet.</li>
+            <li>New CSS styling is used, water.css.</li>
+            <li>Login system.</li>
+            <li>Signup system.</li>
+            <li>New Favicon.</li>
+            <li>BPS-CDN stores accounts.</li>
+        </ul>
+    </div><div class="spacer"></div>
+    <footer>
+        <nav>
+            <a class="home" href="/">Home</a>
+            <ul class="nav_links">
+                <li><a href="/all-pages/">All Pages</a></li>
+                <li><a href="/updates/">Updates</a></li>
+                <li><a href="/issues/">Issues</a></li>
+                <li><a href="/contact/">Contact</a></li>
+            </ul>
+        </nav>
+        <a href="/login/"><button>Logout</button></a>
+    </footer>
+</body>
+</html>

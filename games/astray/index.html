@@ -1,7 +1,18 @@
 <html>
 
     <head>
-        <script src="/main.js"></script>
+        <script>
+        document.onreadystatechange = function () {
+        var state = document.readyState
+        if (state == 'interactive') {
+             document.body.style.visibility="hidden";
+        } else if (state == 'complete') {
+            setTimeout(function(){
+               document.body.style.visibility="visible";
+            },1000);
+        }}
+    </script>
+    <script src="/main.js"></script>
         <script src='Box2dWeb.min.js'></script>
         <script src="Three.js"></script>
         <script src="keyboard.js"></script>
@@ -363,7 +374,7 @@
     })
 </script>
     
-    <body>
+    <body style="visibility: hidden;">
     
     <div id='instructions'>
         How to play Astray:

@@ -1,7 +1,18 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <script src="/main.js"></script>
+  <script>
+        document.onreadystatechange = function () {
+        var state = document.readyState
+        if (state == 'interactive') {
+             document.body.style.visibility="hidden";
+        } else if (state == 'complete') {
+            setTimeout(function(){
+               document.body.style.visibility="visible";
+            },1000);
+        }}
+    </script>
+    <script src="/main.js"></script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Geometry Dash</title>
@@ -177,7 +188,7 @@ body {
         channel: '1035597205354057789' // #school
     })
 </script>
-<body>
+<body style="visibility: hidden;">
 <div id="wrapper">
 <canvas id="stage"></canvas>
 <div id="monitors"></div>

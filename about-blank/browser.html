@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+        }
+        
+        .tab {
+            display: none;
+        }
+        
+        .tab.active {
+            display: block;
+        }
+        
+        .tab-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #f2f2f2;
+            border: 1px solid #ccc;
+            cursor: pointer;
+        }
+        
+        .tab-button.active {
+            background-color: #e6e6e6;
+        }
+        
+        .address-bar {
+            margin-top: 10px;
+            display: flex;
+        }
+        
+        .address-bar input[type="text"] {
+            flex-grow: 1;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        
+        .address-bar button {
+            padding: 5px 10px;
+            margin-left: 10px;
+            background-color: #f2f2f2;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        .tabs {
+            height: calc(100vh - 85px);
+        }
+        
+        .tab-iframe {
+            width: 100%;
+            height: calc(100vh - 85px);
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="tab-buttons">
+        <div class="tab-button active" onclick="openTab(event, 'tab1')">Tab 1</div>
+        <div class="tab-button" onclick="openTab(event, 'tab2')">Tab 2</div>
+        <div class="tab-button" onclick="openTab(event, 'tab3')">Tab 3</div>
+        <div class="tab-button" onclick="openTab(event, 'tab4')">Tab 4</div>
+        <div class="tab-button" onclick="openTab(event, 'tab5')">Tab 5</div>
+        <div class="tab-button" onclick="openTab(event, 'tab6')">Tab 6</div>
+        <div class="tab-button" onclick="openTab(event, 'tab7')">Tab 7</div>
+        <div class="tab-button" onclick="openTab(event, 'tab8')">Tab 8</div>
+        <div class="tab-button" onclick="openTab(event, 'tab9')">Tab 9</div>
+        <div class="tab-button" onclick="openTab(event, 'tab10')">Tab 10</div>
+        <div class="tab-button" onclick="openTab(event, 'tab11')">Tab 11</div>
+        <div class="tab-button" onclick="openTab(event, 'tab12')">Tab 12</div>
+        <div class="tab-button" onclick="openTab(event, 'tab13')">Tab 13</div>
+        <div class="tab-button" onclick="openTab(event, 'tab14')">Tab 14</div>
+        <div class="tab-button" onclick="openTab(event, 'tab15')">Tab 15</div>
+        
+    </div>
+    
+    <div class="address-bar">
+        <input type="text" id="urlInput" placeholder="Enter URL">
+        <button onclick="loadURL()">Go</button>
+    </div>
+    
+    <div class="tabs">
+        <div id="tab1" class="tab active">
+            <iframe id="iframe1" class="tab-iframe"></iframe>
+        </div>
+        
+        <div id="tab2" class="tab">
+            <iframe id="iframe2" class="tab-iframe"></iframe>
+        </div>
+        
+        <div id="tab3" class="tab">
+            <iframe id="iframe3" class="tab-iframe"></iframe>
+        </div>
+
+        <div id="tab4" class="tab">
+          <iframe id="iframe4" class="tab-iframe"></iframe>
+        </div>
+
+        <div id="tab5" class="tab">
+          <iframe id="iframe5" class="tab-iframe"></iframe>
+        </div>
+        
+        <div id="tab6" class="tab">
+          <iframe id="iframe6" class="tab-iframe"></iframe>
+        </div>
+        
+        <div id="tab7" class="tab">
+          <iframe id="iframe7" class="tab-iframe"></iframe>
+        </div>
+        
+        <div id="tab8" class="tab">
+          <iframe id="iframe8" class="tab-iframe"></iframe>
+        </div>
+        
+        <div id="tab9" class="tab">
+          <iframe id="iframe9" class="tab-iframe"></iframe>
+        </div>
+        
+        <div id="tab10" class="tab">
+          <iframe id="iframe10" class="tab-iframe"></iframe>
+        </div>
+        
+        <div id="tab11" class="tab">
+          <iframe id="iframe11" class="tab-iframe"></iframe>
+        </div>
+        
+        <div id="tab12" class="tab">
+          <iframe id="iframe12" class="tab-iframe"></iframe>
+        </div>
+        
+        <div id="tab13" class="tab">
+          <iframe id="iframe13" class="tab-iframe"></iframe>
+        </div>
+        
+        <div id="tab14" class="tab">
+          <iframe id="iframe14" class="tab-iframe"></iframe>
+        </div>
+        
+        <div id="tab15" class="tab">
+          <iframe id="iframe15" class="tab-iframe"></iframe>
+        </div>
+    </div>
+    
+    <script>
+var currentTab = 'tab1';
+function openTab(event, tabId) {
+  var tabs = document.getElementsByClassName("tab");
+  for (var i = 0; i < tabs.length; i++) {
+    tabs[i].style.display = "none";
+    tabs[i].classList.remove("active")
+  }
+  var tabButtons = document.getElementsByClassName("tab-button");
+  for (var i = 0; i < tabButtons.length; i++) {
+    tabButtons[i].classList.remove("active");
+  }
+  document.getElementById(tabId).style.display = "block";
+  document.getElementById(tabId).className = 'tab active';
+  event.currentTarget.classList.add("active");
+}
+
+function handleLinkClick(event) {
+  event.preventDefault(); // Prevents the link from opening normally
+  var linkHREF = event.target.href; // Store the link's href in a variable
+  var activeTab = document.querySelector(".tab.active");
+  var iframe = activeTab.querySelector("iframe");
+  iframe.src = linkHREF;
+  iframe.addEventListener('load', function() {
+  var iframeLinks = iframe.contentDocument.getElementsByTagName('a');
+  if (iframeLinks != null) {
+  for (var i = 0; i < iframeLinks.length; i++)
+    {iframeLinks[i].addEventListener("click", function(event){event.preventDefault(); handleLinkClick(event);});}
+  };
+  })
+}
+function loadURL() {
+  var urlInput = document.getElementById("urlInput");
+  var url = urlInput.value;
+  var activeTab = document.querySelector(".tab.active");
+  var iframe = activeTab.querySelector("iframe");
+  iframe.src = url;
+  iframe.addEventListener('load', function() {
+  var iframeLinks = iframe.contentDocument.getElementsByTagName('a');
+  if (iframeLinks != null) {
+  for (var i = 0; i < iframeLinks.length; i++)
+    {iframeLinks[i].addEventListener("click", function(event){event.preventDefault(); handleLinkClick(event);});}
+  };
+  })
+
+}
+    </script>
+</body>
+</html>

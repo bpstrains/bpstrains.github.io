@@ -1,41 +1,19 @@
 let users = [];
-
-// Check if the environment is offline or online
-const isOffline = !navigator.onLine;
-
-if (isOffline) {
-  // Offline environment, fetch local users.json
-  fetch('users.json')
-    .then(response => response.json())
-    .then(data => {
-      users = data;
-      var loggedInValues = checkLoggedIn();
-      if (loggedInValues.some(value => users.some(user => user.hash === value))) {
-        // User is logged in
-      } else {
-        window.location.href = "/login.html";
-      }
-    })
+fetch('https://bpscdn.pages.dev/users.json')
+  .then(response => response.json())
+  .then(data => {
+    users = data;
+    var loggedInValues = checkLoggedIn();
+    if (loggedInValues.some(value => users.some(user => user.hash === value))) {
+      // User is logged in
+    } else {
+      deleteCookie()
+      window.location.href = "/login/";
+    }
+  })
     .catch(error => {
-      console.error('Error:', error);
-    });
-} else {
-  // Online environment, fetch remote users.json
-  fetch('https://bpscdn.pages.dev/users.json')
-    .then(response => response.json())
-    .then(data => {
-      users = data;
-      var loggedInValues = checkLoggedIn();
-      if (loggedInValues.some(value => users.some(user => user.hash === value))) {
-        // User is logged in
-      } else {
-        window.location.href = "/login.html";
-      }
-    })
-    .catch(error => {
-      console.error('Error:', error);
-    });
-}
+      // something
+  });
 
 function checkLoggedIn() {
   var cookie = document.cookie;
@@ -51,8 +29,7 @@ function checkLoggedIn() {
   }
   return loggedInValues;
 }
-
-const activityCheckInterval = 30000; // 30 seconds
+const activityCheckInterval = 1200000;
 
 let isUserActive = true; // Assume user is initially active
 

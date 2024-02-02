@@ -5,7 +5,18 @@
 <head>
 		<title>Radius Raid</title>
 		<link rel="shortcut icon" id="favicon" />
-		<script src="/main.js"></script>
+		<script>
+        document.onreadystatechange = function () {
+        var state = document.readyState
+        if (state == 'interactive') {
+             document.body.style.visibility="hidden";
+        } else if (state == 'complete') {
+            setTimeout(function(){
+               document.body.style.visibility="visible";
+            },1000);
+        }}
+    </script>
+    <script src="/main.js"></script>
 		<style>
 			body {
 				background: #080808;
@@ -56,7 +67,7 @@
         channel: '1035597205354057789' // #school
     })
 </script>
-	<body>
+	<body style="visibility: hidden;">
 		<div id="wrap">
 			<div id="wrap-inner">
 				<canvas id="cbg1"></canvas>

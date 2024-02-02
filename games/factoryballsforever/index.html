@@ -1,7 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<script src="/main.js"></script>
+	<script>
+        document.onreadystatechange = function () {
+        var state = document.readyState
+        if (state == 'interactive') {
+             document.body.style.visibility="hidden";
+        } else if (state == 'complete') {
+            setTimeout(function(){
+               document.body.style.visibility="visible";
+            },1000);
+        }}
+    </script>
+    <script src="/main.js"></script>
 <meta charset="UTF-8">
 <title>Factory Balls forever</title>
 <style>

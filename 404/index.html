@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <script>
+        document.onreadystatechange = function () {
+        var state = document.readyState
+        if (state == 'interactive') {
+             document.body.style.visibility="hidden";
+        } else if (state == 'complete') {
+            setTimeout(function(){
+               document.body.style.visibility="visible";
+            },1000);
+        }}
+    </script>
+    <link href="/style/s.css" rel="stylesheet" />
+    <script src="/main.js"></script>
+</head>
+<body style="visibility: hidden;">
+    <h1>404</h1>
+    <br>
+    <p>This page does not exist.</p>
+</body>
+</html>

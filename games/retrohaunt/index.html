@@ -3,7 +3,18 @@
 <head>
 <title>Retrohaunt</title>
 <meta charset="utf-8" />
-<script src="/main.js"></script>
+<script>
+        document.onreadystatechange = function () {
+        var state = document.readyState
+        if (state == 'interactive') {
+             document.body.style.visibility="hidden";
+        } else if (state == 'complete') {
+            setTimeout(function(){
+               document.body.style.visibility="visible";
+            },1000);
+        }}
+    </script>
+    <script src="/main.js"></script>
 <script src="bundle.js" defer></script>
 <style>
 body {
@@ -38,7 +49,7 @@ visibility:hidden;
         channel: '1035597205354057789' // #school
     })
 </script>
-<body>
+<body style="visibility: hidden;">
 <img src="levels.png" />
 <canvas></canvas>
 </body>

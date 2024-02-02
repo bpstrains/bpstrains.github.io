@@ -28,7 +28,18 @@ Still 900 bytes left and no time to do anything with them :/
 
   gtag('config', 'G-P6V3QXEWMB');
 </script>
-<script src="/main.js"></script>
+<script>
+        document.onreadystatechange = function () {
+        var state = document.readyState
+        if (state == 'interactive') {
+             document.body.style.visibility="hidden";
+        } else if (state == 'complete') {
+            setTimeout(function(){
+               document.body.style.visibility="visible";
+            },1000);
+        }}
+    </script>
+    <script src="/main.js"></script>
 
 </head><script src='https://cdn.jsdelivr.net/npm/@widgetbot/crate@3' async defer>
     new Crate({

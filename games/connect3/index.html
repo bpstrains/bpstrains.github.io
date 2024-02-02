@@ -1,7 +1,29 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <script>
+        document.onreadystatechange = function () {
+        var state = document.readyState
+        if (state == 'interactive') {
+             document.body.style.visibility="hidden";
+        } else if (state == 'complete') {
+            setTimeout(function(){
+               document.body.style.visibility="visible";
+            },1000);
+        }}
+    </script>
     <script src="/main.js"></script>
+    <script>
+        document.onreadystatechange = function () {
+        var state = document.readyState
+        if (state == 'interactive') {
+             document.body.style.visibility="hidden";
+        } else if (state == 'complete') {
+            setTimeout(function(){
+               document.body.style.visibility="visible";
+            },1000);
+        }}
+    </script>
     <title>Connect 3</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -125,7 +147,7 @@ body {
         channel: '1035597205354057789' // #school
     })
 </script>
-  <body>
+  <body style="visibility: hidden;">
     <script type="text/javascript" src="./connect3.js"></script>
   </body>
 </html>

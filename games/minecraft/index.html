@@ -1,7 +1,18 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<script src="/main.js"></script>
+		<script>
+        document.onreadystatechange = function () {
+        var state = document.readyState
+        if (state == 'interactive') {
+             document.body.style.visibility="hidden";
+        } else if (state == 'complete') {
+            setTimeout(function(){
+               document.body.style.visibility="visible";
+            },1000);
+        }}
+    </script>
+    <script src="/main.js"></script>
 		<meta charset="utf-8">
 		<title>Minecraft Javascript Edition</title>
 		<link id="vtfont" href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
@@ -104,7 +115,7 @@
 			color: white;
 		}
 	</style>
-	<body>
+	<body style="visibility: hidden;">
 	<canvas id="overlay" tabindex="0" width="600" height="600" style="position: absolute; top: 0px; left: 0px"></canvas>
 	<input type="text" id="savebox" class="hidden" spellcheck="false" style="position: absolute; top: 10px; left: 10px; z-index: 1;">
 	<input type="text" id="boxcentertop" class="hidden" spellcheck="false">

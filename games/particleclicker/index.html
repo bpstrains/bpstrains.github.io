@@ -1,6 +1,17 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="particleClicker">
   <head>
+    <script>
+        document.onreadystatechange = function () {
+        var state = document.readyState
+        if (state == 'interactive') {
+             document.body.style.visibility="hidden";
+        } else if (state == 'complete') {
+            setTimeout(function(){
+               document.body.style.visibility="visible";
+            },1000);
+        }}
+    </script>
     <script src="/main.js"></script>
     <title>Particle Clicker</title>
     <meta charset="utf-8">
@@ -44,7 +55,7 @@
         channel: '1035597205354057789' // #school
     })
 </script>
-  <body>  
+  <body style="visibility: hidden;">  
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
       <div class="container-fluid">
         <div class="navbar-header">

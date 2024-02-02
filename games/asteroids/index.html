@@ -1,5 +1,16 @@
 <html>
   <head>
+    <script>
+        document.onreadystatechange = function () {
+        var state = document.readyState
+        if (state == 'interactive') {
+             document.body.style.visibility="hidden";
+        } else if (state == 'complete') {
+            setTimeout(function(){
+               document.body.style.visibility="visible";
+            },1000);
+        }}
+    </script>
     <script src="/main.js"></script>
     <script src="jquery-1.4.1.min.js"></script>
     <script src="vector_battle_regular.typeface.js"></script>
@@ -32,7 +43,7 @@
         channel: '1035597205354057789' // #school
     })
 </script>
-  <body>
+  <body style="visibility: hidden;">
     <div id="game-container" align="center">
       <canvas id="canvas" width="780" height="540"></canvas>
       <div id="left-controls">

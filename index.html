@@ -6,15 +6,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <link href="/style/water.css" rel="stylesheet" />
+    <script>
+        document.onreadystatechange = function () {
+        var state = document.readyState
+        if (state == 'interactive') {
+             document.body.style.visibility="hidden";
+        } else if (state == 'complete') {
+            setTimeout(function(){
+               document.body.style.visibility="visible";
+            },1000);
+        }}
+    </script>
+    <link href="/style/s.css" rel="stylesheet" />
     <script src="/main.js"></script>
 </head>
-<body>
-    <h1>BPSTrains</h1>
-    <h3>Fun and Games:</h3>
-    <ul>
-        <li><p><a href="/bookmarklets/">Bookmarklets</a></p></li>
-        <li><p><a href="/games/">Games</a></p></li>
-    </ul>
+<body style="visibility: hidden;">
+    <div>
+        <header>
+            <a class="sitename" href="/">BPSTrains</a>
+            <nav>
+                <ul class="nav_links">
+                    <li><a href="/games/">Games</a></li>
+                    <li><a href="/about-blank/">about:blank</a></li>
+                    <li><a href="/updates/">Updates</a></li>
+                    <li><a href="/issues/">Issues</a></li>
+                    <li><a href="/contact/">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+        <h1>Welcome to BPSTrains</h1>
+        <p>You may notice all the changes we've made recently for the site. We have made so many changes that there are probably many bugs/issues. We hope you press the Issues button, found at the top and bottom of any page thats not a game, if you see any. Feel free to send us an email at any time to suggest something or talk, just note it may take a while for us to respond.</p>
+        <h3>Explore:</h3>
+        <ul>
+            <li><a href="/games/">Games</a></li>
+            <li><a href="/about-blank/">about:blank</a></li>
+            <li><a href="/updates/">Updates</a></li>
+            <li><a href="/issues/">Issues</a></li>
+        </ul>
+    </div><div class="spacer"></div>
+    <footer>
+        <nav>
+            <a class="home" href="/">Home</a>
+            <ul class="nav_links">
+                <li><a href="/all-pages/">All Pages</a></li>
+                <li><a href="/updates/">Updates</a></li>
+                <li><a href="/issues/">Issues</a></li>
+                <li><a href="/contact/">Contact</a></li>
+            </ul>
+        </nav>
+        <a href="/login/"><button>Logout</button></a>
+    </footer>
 </body>
 </html>

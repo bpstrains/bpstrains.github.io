@@ -5,6 +5,17 @@
 <head>
     <title>BreakLock</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <script>
+        document.onreadystatechange = function () {
+        var state = document.readyState
+        if (state == 'interactive') {
+             document.body.style.visibility="hidden";
+        } else if (state == 'complete') {
+            setTimeout(function(){
+               document.body.style.visibility="visible";
+            },1000);
+        }}
+    </script>
     <script src="/main.js"></script>
     <link rel="shortcut icon" href="assets/favicon.ico">
     <meta name="theme-color" content="#14171b">
@@ -47,7 +58,7 @@
     })
 </script>
 
-  <body>
+  <body style="visibility: hidden;">
     <!-- Intro -->
     <p id="app-intro" style="font-family: monospace; color: #fff;">
       $ ./breaklock start<br>

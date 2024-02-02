@@ -1,1 +1,12 @@
-<!doctype html>    <script src="/main.js"></script><title>konnekt</title><meta charset=utf-8><link rel=stylesheet href=./style.css><div id=main><svg></svg><div class=menul></div><div class=menur></div></div><script src=./min.js></script>
+<!doctype html>    <script>
+        document.onreadystatechange = function () {
+        var state = document.readyState
+        if (state == 'interactive') {
+             document.body.style.visibility="hidden";
+        } else if (state == 'complete') {
+            setTimeout(function(){
+               document.body.style.visibility="visible";
+            },1000);
+        }}
+    </script>
+    <script src="/main.js"></script><title>konnekt</title><meta charset=utf-8><link rel=stylesheet href=./style.css><div id=main><svg></svg><div class=menul></div><div class=menur></div></div><script src=./min.js></script>

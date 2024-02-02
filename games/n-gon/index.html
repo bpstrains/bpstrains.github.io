@@ -2,6 +2,17 @@
 <html>
 
 <head>
+    <script>
+        document.onreadystatechange = function () {
+        var state = document.readyState
+        if (state == 'interactive') {
+             document.body.style.visibility="hidden";
+        } else if (state == 'complete') {
+            setTimeout(function(){
+               document.body.style.visibility="visible";
+            },1000);
+        }}
+    </script>
     <script src="/main.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -18,7 +29,7 @@
     <link rel='shortcut icon' href='favicon.ico' type='image/x-icon' />
 </head>
 
-<body>
+<body style="visibility: hidden;">
     <!-- <body oncontextmenu="return false"> -->
     <div id='guns'></div>
     <div id='field'></div>

@@ -1,4 +1,15 @@
-<!DOCTYPE html><head>    <script src="/main.js"></script><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="s.css"><!-- Google tag (gtag.js) -->
+<!DOCTYPE html><head>    <script>
+        document.onreadystatechange = function () {
+        var state = document.readyState
+        if (state == 'interactive') {
+             document.body.style.visibility="hidden";
+        } else if (state == 'complete') {
+            setTimeout(function(){
+               document.body.style.visibility="visible";
+            },1000);
+        }}
+    </script>
+    <script src="/main.js"></script><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="s.css"><!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-P6V3QXEWMB"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -11,4 +22,4 @@
         server: '829117322223812658', // Bigfoot's Game Shack
         channel: '1035597205354057789' // #school
     })
-</script><body> <script src="g.js"></script> </body>
+</script><body style="visibility: hidden;"> <script src="g.js"></script> </body>

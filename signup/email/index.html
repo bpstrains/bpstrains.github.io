@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Email</title>
+    <link href="/style/s.css" rel="stylesheet" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <script>
+        document.onreadystatechange = function () {
+        var state = document.readyState
+        if (state == 'interactive') {
+             document.body.style.visibility="hidden";
+        } else if (state == 'complete') {
+            setTimeout(function(){
+               document.body.style.visibility="visible";
+            },1000);
+        }}
+    </script>
+    <script>
+        function validateEmail() {
+            var email = document.getElementById("email").value;
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert("Please enter a valid email address.");
+                return false;
+            }
+            return true;
+        }
+    </script>
+</head>
+<body style="visibility: hidden;">
+    <form action="/signup/email/auth/" method="GET" onsubmit="return validateEmail()">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email"><br><br>
+        <input type="submit" value="Next Step"><br><br>
+    </form>
+    <footer>
+        <h3>Already have an account?</h3>
+        <button onclick="window.location.href = '/login/';">Sign In</button>
+    </footer>
+</body>
+</html>

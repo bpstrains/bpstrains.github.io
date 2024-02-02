@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <link href="/style/s.css" rel="stylesheet" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <script>
+        document.onreadystatechange = function () {
+        var state = document.readyState
+        if (state == 'interactive') {
+             document.body.style.visibility="hidden";
+        } else if (state == 'complete') {
+            setTimeout(function(){
+               document.body.style.visibility="visible";
+            },1000);
+        }}
+        document.cookie = "loggedIn=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    </script>
+</head>
+<body style="visibility: hidden;">
+    <form action="/login/auth/" method="GET">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username"><br><br>
+        
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password"><br><br>
+        
+        <input type="submit" value="Login">
+    </form>
+    <footer>
+        <h3>Don't have an account?</h3>
+        <button onclick="window.location.href = '/signup/email/';">Request Account</button>
+    </footer>
+</body>
+</html>

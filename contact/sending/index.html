@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        document.onreadystatechange = function () {
+        var state = document.readyState
+        if (state == 'interactive') {
+             document.body.style.visibility="hidden";
+        } else if (state == 'complete') {
+            setTimeout(function(){
+               document.body.style.visibility="visible";
+            },1000);
+        }}
+        async function checkCookie() {
+        var cookieName = 'email';
+        var cookieHash = '9eb86cb5d7f1fc9d5c4638ff4f967862bf74ddf786d034e61be33adb3c5f4d42';
+        function getEmailCookie() {
+        var cookieName = "email";
+        var cookies = document.cookie.split(";");
+
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = cookies[i].trim();
+            if (cookie.startsWith(cookieName + "=")) {
+            var cookieValue = cookie.substring(cookieName.length + 1);
+            return cookieValue;
+            }
+        }
+
+        return null;
+        }
+
+        // Usage:
+        var domain = getEmailCookie();
+
+        var encoder = new TextEncoder();
+        var data = encoder.encode(domain);
+        var hashBuffer = await crypto.subtle.digest('SHA-256', data);
+        var hashArray = Array.from(new Uint8Array(hashBuffer));
+        var hashHex = hashArray.map(byte => byte.toString(16).padStart(2, '0')).join('');
+
+        if (hashHex === cookieHash) {
+
+        } else {
+            window.location.href = '/contact/';
+        }
+        }
+
+        // Call the checkCookie function
+        checkCookie();
+
+        function checkBoxes() {
+            var issueRadio = document.getElementById("issue-bug").checked
+            var suggestionRadio = document.getElementById("suggestion").checked
+            var otherRadio = document.getElementById("other").checked
+            var messageBoxValue = document.getElementById("messageBox").value
+            if (!issueRadio&&!suggestionRadio&&!otherRadio) {
+                if (messageBoxValue == "") {
+                    alert("Select Reason and Enter Message")
+                } else {
+                    alert("Select Reason")
+                }
+                return false;
+            } else if (messageBoxValue == "") {
+                alert("Enter Message")
+                return false;
+            } else {
+                return true;
+            }
+        }
+      </script>
+      <link href="/style/s.css" rel="stylesheet" />
+      <script src="/main.js"></script>
+      <link rel="icon" type="image/x-icon" href="/favicon.ico">
+      <title>Contact</title>
+</head>
+<body style="visibility: hidden;">
+    <form action="/contact/sending/output/" method="GET" onsubmit="return checkBoxes()">
+        <h3>Reason for Contacting</h3>
+        <input type="radio" id="issue-bug" name="contactReason" value="Issue/Bug">
+        <label for="issue-bug">Issue/Bug</label><br>
+        <input type="radio" id="suggestion" name="contactReason" value="Suggestion">
+        <label for="suggestion">Suggestion</label><br>
+        <input type="radio" id="other" name="contactReason" value="Other">
+        <label for="other">Other</label><br>
+        <h3>Message:</h3>
+        <input type="text" id="messageBox" name="message">
+        <button type="submit">Next Step</button>
+    </form>
+</body>
+</html>

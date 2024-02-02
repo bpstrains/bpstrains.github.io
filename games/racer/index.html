@@ -2,7 +2,18 @@
 
 <html>
 <head>
-  <script src="/main.js"></script>
+  <script>
+        document.onreadystatechange = function () {
+        var state = document.readyState
+        if (state == 'interactive') {
+             document.body.style.visibility="hidden";
+        } else if (state == 'complete') {
+            setTimeout(function(){
+               document.body.style.visibility="visible";
+            },1000);
+        }}
+    </script>
+    <script src="/main.js"></script>
   <title>Javascript Racer</title>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
   <link href="common.css" rel="stylesheet" type="text/css" />
@@ -23,7 +34,7 @@
     })
 </script> 
 
-<body> 
+<body style="visibility: hidden;"> 
 
   <table id="controls" style="display:none">
     <tr>

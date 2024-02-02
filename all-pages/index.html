@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        document.onreadystatechange = function () {
+        var state = document.readyState
+        if (state == 'interactive') {
+             document.body.style.visibility="hidden";
+        } else if (state == 'complete') {
+            setTimeout(function(){
+               document.body.style.visibility="visible";
+            },1000);
+        }}
+      </script>
+      <link href="/style/s.css" rel="stylesheet" />
+      <script src="/main.js"></script>
+      <link rel="icon" type="image/x-icon" href="/favicon.ico">
+      <title>All Pages</title>
+</head>
+<body style="visibility: hidden;">
+    <div>
+        <header>
+            <a class="sitename" href="/">BPSTrains</a>
+            <nav>
+                <ul class="nav_links">
+                    <li><a href="/games/">Games</a></li>
+                    <li><a href="/about-blank/">about:blank</a></li>
+                    <li><a href="/updates/">Updates</a></li>
+                    <li><a href="/issues/">Issues</a></li>
+                    <li><a href="/contact/">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+        <h1>All Pages:</h1>
+        <ul>
+            <li><a href="/about-blank/">about:blank</a></li>
+            <p>For masking sites.</p>
+
+            <li><a href="/contact">Contact</a></li>
+            <p>Contact us.</p>
+
+            <li><a href="/games/">Games</a></li>
+            <p>Play games.</p>
+
+            <li><a href="/issues/">Issues</a></li>
+            <p>Issues from this site.</p>
+
+            <li><a href="/updates/">Updates</a></li>
+            <p>New features and bug fixes.</p>
+        </ul>
+    </div>
+    <div class="spacer"></div>
+    <footer>
+        <nav>
+            <a class="home" href="/">Home</a>
+            <ul class="nav_links">
+                <li><a href="/all-pages/">All Pages</a></li>
+                <li><a href="/updates/">Updates</a></li>
+                <li><a href="/issues/">Issues</a></li>
+                <li><a href="/contact/">Contact</a></li>
+            </ul>
+        </nav>
+        <a href="/login/"><button>Logout</button></a>
+    </footer>
+</body>
+</html>

@@ -6,65 +6,99 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Games</title>
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <link href="/style/water.css" rel="stylesheet" />
+    <script>
+        document.onreadystatechange = function () {
+        var state = document.readyState
+        if (state == 'interactive') {
+             document.body.style.visibility="hidden";
+        } else if (state == 'complete') {
+            setTimeout(function(){
+               document.body.style.visibility="visible";
+            },1000);
+        }}
+    </script>
+    <link href="/style/s.css" rel="stylesheet" />
     <script src="/main.js"></script>
 </head>
-<body>
-    <h1>Games</h1>
-    <ul>
-        <li><a href="/games/2048">2048</a></li>
-        <li><a href="/games/asteroids">Asteroids</a></li>
-        <li><a href="/games/astray">astray</a></li>
-        <li><a href="/games/backcountry">Backcountry</a></li>
-        <li><a href="/games/blackholesquare">Black Hole Square</a></li>
-        <li><a href="/games/breaklock">BreakLock</a></li>
-        <li><a href="/games/captaincallisto">Captain Callisto</a></li>
-        <li><a href="/games/chess">Chess</a></li>
-        <li><a href="/games/chromedino">Dino Game</a></li>
-        <li><a href="/games/connect3">Connect 3</a></li>
-        <li><a href="/games/edgenotfound">Edge Not Found</a></li>
-        <li><a href="/games/evilglitch">Evil Glitch</a></li>
-        <li><a href="/games/factoryballsforever">Factory Balls forever</a></li>
-        <li><a href="/games/fbwg">Fireboy & Watergirl Forest Temple</a></li>
-        <li><a href="/games/flappybird">Flappy Bird</a></li>
-        <li><a href="/games/FullScreenMario/Source">Full Screen Mario</a></li>
-        <li><a href="/games/geometrydash">Geometry Dash</a></li>
-        <li><a href="/games/hextris">Hextris</a></li>
-        <li><a href="/games/idle-breakout">Idle Breakout</a></li>
-        <li><a href="/games/konnekt">konnekt</a></li>
-        <li><a href="/games/minecraft">Minecraft Javascript Edition</a></li>
-        <li><a href="/games/n-gon">n-gon</a></li>
-        <li><a href="/games/ninjavsevilcorp">Ninja vs EVILCORP</a></li>
-        <li><a href="/games/ovo">OvO</a></li>
-        <li><a href="/games/packabunchas">PACKABUNCHAS</a></li>
-        <li><a href="/games/pacman">jsPackman</a></li>
-        <li><a href="/games/particleclicker">Particle Clicker</a></li>
-        <li><a href="/games/pushback">PUSHBACK</a></li>
-        <li><a href="/games/q1k3">Q1K3</a></li>
-        <li><a href="/games/racer">Javascript Racer</a></li>
-        <li><a href="/games/radiusraid">Radius Raid</a></li>
-        <li><a href="/games/retrobowl/retro-bowl-main">Retro Bowl</a></li>
-        <li><a href="/games/retrohaunt">Retrohaunt</a></li>
-        <li><a href="/games/roadblocks">ROADBLOCKS</a></li>
-        <li><a href="/games/run3">Run 3</a></li>
-        <li><a href="/games/sans">Bad Time Simulator</a></li>
-        <li><a href="/games/sg">Slope</a></li>
-        <li><a href="/games/shuttledeck">SHUTTLEDECK</a></li>
-        <li><a href="/games/snake">Snake</a></li>
-        <li><a href="/games/spacecompany">Space Company</a></li>
-        <li><a href="/games/spacegarden">SPACE GARDEN</a></li>
-        <li><a href="/games/spacehuggers">SPACE HUGGERS</a></li>
-        <li><a href="/games/tetris">TwitchTetris</a></li>
-        <li><a href="/games/themazeofspacegoblins">The Maze Of Space Goblins</a></li>
-        <li><a href="/games/towermaster">Tower</a></li>
-        <li><a href="/games/trimps">Trimps</a></li>
-        <li><a href="/games/underrun">UNDERRUN</a></li>
-        <li><a href="/games/vex6">Vex 6</a></li>
-        <li><a href="/games/xx142-b2exe">xx142-b2.exe</a></li>
-    </ul>
-    <h3>Check out the Bigfoots Game Shack website, which is where I found most of thse games.</h3>
+<body style="visibility: hidden;">
+    <div>
+        <header>
+            <a class="sitename" href="/">BPSTrains</a>
+            <nav>
+                <ul class="nav_links">
+                    <li><a href="/games/">Games</a></li>
+                    <li><a href="/about-blank/">about:blank</a></li>
+                    <li><a href="/updates/">Updates</a></li>
+                    <li><a href="/issues/">Issues</a></li>
+                    <li><a href="/contact/">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+        <h1>Games</h1>
+        <ul>
+            <li><a href="/games/2048">2048</a></li>
+            <li><a href="/games/asteroids">Asteroids</a></li>
+            <li><a href="/games/astray">astray</a></li>
+            <li><a href="/games/backcountry">Backcountry</a></li>
+            <li><a href="/games/blackholesquare">Black Hole Square</a></li>
+            <li><a href="/games/breaklock">BreakLock</a></li>
+            <li><a href="/games/captaincallisto">Captain Callisto</a></li>
+            <li><a href="/games/chess">Chess</a></li>
+            <li><a href="/games/chromedino">Dino Game</a></li>
+            <li><a href="/games/connect3">Connect 3</a></li>
+            <li><a href="/games/edgenotfound">Edge Not Found</a></li>
+            <li><a href="/games/evilglitch">Evil Glitch</a></li>
+            <li><a href="/games/factoryballsforever">Factory Balls forever</a></li>
+            <li><a href="/games/fbwg">Fireboy & Watergirl Forest Temple</a></li>
+            <li><a href="/games/flappybird">Flappy Bird</a></li>
+            <li><a href="/games/FullScreenMario/Source">Full Screen Mario</a></li>
+            <li><a href="/games/geometrydash">Geometry Dash</a></li>
+            <li><a href="/games/hextris">Hextris</a></li>
+            <li><a href="/games/idle-breakout">Idle Breakout</a></li>
+            <li><a href="/games/konnekt">konnekt</a></li>
+            <li><a href="/games/minecraft">Minecraft Javascript Edition</a></li>
+            <li><a href="/games/n-gon">n-gon</a></li>
+            <li><a href="/games/ninjavsevilcorp">Ninja vs EVILCORP</a></li>
+            <li><a href="/games/ovo">OvO</a></li>
+            <li><a href="/games/packabunchas">PACKABUNCHAS</a></li>
+            <li><a href="/games/pacman">jsPackman</a></li>
+            <li><a href="/games/particleclicker">Particle Clicker</a></li>
+            <li><a href="/games/pushback">PUSHBACK</a></li>
+            <li><a href="/games/q1k3">Q1K3</a></li>
+            <li><a href="/games/racer">Javascript Racer</a></li>
+            <li><a href="/games/radiusraid">Radius Raid</a></li>
+            <li><a href="/games/retrobowl/retro-bowl-main">Retro Bowl</a></li>
+            <li><a href="/games/retrohaunt">Retrohaunt</a></li>
+            <li><a href="/games/roadblocks">ROADBLOCKS</a></li>
+            <li><a href="/games/run3">Run 3</a></li>
+            <li><a href="/games/sans">Bad Time Simulator</a></li>
+            <li><a href="/games/sg">Slope</a></li>
+            <li><a href="/games/shuttledeck">SHUTTLEDECK</a></li>
+            <li><a href="/games/snake">Snake</a></li>
+            <li><a href="/games/spacecompany">Space Company</a></li>
+            <li><a href="/games/spacegarden">SPACE GARDEN</a></li>
+            <li><a href="/games/spacehuggers">SPACE HUGGERS</a></li>
+            <li><a href="/games/tetris">TwitchTetris</a></li>
+            <li><a href="/games/themazeofspacegoblins">The Maze Of Space Goblins</a></li>
+            <li><a href="/games/towermaster">Tower</a></li>
+            <li><a href="/games/trimps">Trimps</a></li>
+            <li><a href="/games/underrun">UNDERRUN</a></li>
+            <li><a href="/games/vex6">Vex 6</a></li>
+            <li><a href="/games/xx142-b2exe">xx142-b2.exe</a></li>
+        </ul>
+        <h3>Check out the Bigfoots Game Shack website, which is where I found most of these games.</h3>
+    </div><div class="spacer"></div>
     <footer>
-        <a href="/">Home</a>
+        <nav>
+            <a class="home" href="/">Home</a>
+            <ul class="nav_links">
+                <li><a href="/all-pages/">All Pages</a></li>
+                <li><a href="/updates/">Updates</a></li>
+                <li><a href="/issues/">Issues</a></li>
+                <li><a href="/contact/">Contact</a></li>
+            </ul>
+        </nav>
+        <a href="/login/"><button>Logout</button></a>
     </footer>
 </body>
 </html>

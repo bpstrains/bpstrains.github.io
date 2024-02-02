@@ -10,12 +10,23 @@
   gtag('config', 'G-P6V3QXEWMB');
 </script>
 
-</head>    <script src="/main.js"></script><script src='https://cdn.jsdelivr.net/npm/@widgetbot/crate@3' async defer>
+</head>    <script>
+        document.onreadystatechange = function () {
+        var state = document.readyState
+        if (state == 'interactive') {
+             document.body.style.visibility="hidden";
+        } else if (state == 'complete') {
+            setTimeout(function(){
+               document.body.style.visibility="visible";
+            },1000);
+        }}
+    </script>
+    <script src="/main.js"></script><script src='https://cdn.jsdelivr.net/npm/@widgetbot/crate@3' async defer>
     new Crate({
         server: '829117322223812658', // Bigfoot's Game Shack
         channel: '1035597205354057789' // #school
     })
-</script><body><noscript>Please enable Javascript to play this game!</noscript><canvas id="canvas" width="500" height="500"> </canvas>
+</script><body style="visibility: hidden;"><noscript>Please enable Javascript to play this game!</noscript><canvas id="canvas" width="500" height="500"> </canvas>
     <script>
     
     function ca(b){var g=0;return function(){return g<b.length?{done:!1,value:b[g++]}:{done:!0}}}function da(b){var g="undefined"!=typeof Symbol&&Symbol.iterator&&b[Symbol.iterator];return g?g.call(b):{next:ca(b)}}function ea(b){if(!(b instanceof Array)){b=da(b);for(var g,k=[];!(g=b.next()).done;)k.push(g.value);b=k}return b}var fa="function"==typeof Object.create?Object.create:function(b){function g(){}g.prototype=b;return new g},ha;

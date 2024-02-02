@@ -1,17 +1,29 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Password Check</title>
-    <link href="/style/water.css" rel="stylesheet" />
+    <title>Checking Email...</title>
+    <link href="/style/s.css" rel="stylesheet" />
     <script src="/crypto.min.js"></script>
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <script>
+      document.onreadystatechange = function () {
+      var state = document.readyState
+      if (state == 'interactive') {
+           document.body.style.visibility="hidden";
+      } else if (state == 'complete') {
+          setTimeout(function(){
+             document.body.style.visibility="visible";
+          },1000);
+      }}
+  </script>
+  <script src="/main.js"></script>
     <script>
       async function checkPassword() {
         var urlParams = new URLSearchParams(window.location.search);
         var email = urlParams.get('email');
         var domain = email ? email.split('@')[1] : ''; // Extract domain from email if available, otherwise set it to an empty string
         if (domain === '') {
-          window.location.href = '/externaldomain.html';
+          window.location.href = '/contact/email/externaldomain/';
           return; // Exit the function to prevent further execution
         }
         var encoder = new TextEncoder();
@@ -24,9 +36,9 @@
             // Set cookie
             document.cookie = 'email=' + domain + '; path=/';
             // Redirect to home page
-            window.location.href = '/signup.html';
+            window.location.href = '/contact/sending/';
           } else {
-            window.location.href = '/externaldomain.html';
+            window.location.href = '/contact/email/externaldomain/';
           }
         } catch (error) {
           console.error('Error:', error);
@@ -37,7 +49,7 @@
       checkPassword();
     </script>
   </head>
-  <body>
+  <body style="visibility: hidden;">
     <h1>Checking Eligibility...</h1>
   </body>
 </html>

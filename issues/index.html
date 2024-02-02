@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        document.onreadystatechange = function () {
+        var state = document.readyState
+        if (state == 'interactive') {
+             document.body.style.visibility="hidden";
+        } else if (state == 'complete') {
+            setTimeout(function(){
+               document.body.style.visibility="visible";
+            },1000);
+        }}
+    </script>
+    <script>
+        fetch('https://bpscdn.pages.dev/issues.json')
+            .then(response => response.json())
+            .then(data => {
+                issues = data;
+                insertIssues(issues)
+            })
+                .catch(error => {
+                // something
+            });
+
+        function insertIssues(issues) {
+            var issuesDivVariable = document.getElementById("issuesDiv")
+            for (var i = 0; i < issues.length; i++) {
+                issuesDivVariable.innerHTML = issuesDivVariable.innerHTML+'<p>'+issues[i].issue+'</p>'
+                console.log(issues[i].issue)
+            }
+        }
+    </script>
+      <link href="/style/s.css" rel="stylesheet" />
+      <script src="/main.js"></script>
+      <link rel="icon" type="image/x-icon" href="/favicon.ico">
+      <title>Issues</title>
+</head>
+<body style="visibility: hidden;">
+    <div>
+        <header>
+            <a class="sitename" href="/">BPSTrains</a>
+            <nav>
+                <ul class="nav_links">
+                    <li><a href="/games/">Games</a></li>
+                    <li><a href="/about-blank/">about:blank</a></li>
+                    <li><a href="/updates/">Updates</a></li>
+                    <li><a href="/issues/">Issues</a></li>
+                    <li><a href="/contact/">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+        <h1>Issues</h1>
+        <h4>Known Issues:</h4>
+        <div id="issuesDiv"></div>
+        <h4>Report an Issue:</h4>
+        <p>To report an issue use our contact page.</p>
+    </div><div class="spacer"></div>
+    <footer>
+        <nav>
+            <a class="home" href="/">Home</a>
+            <ul class="nav_links">
+                <li><a href="/all-pages/">All Pages</a></li>
+                <li><a href="/updates/">Updates</a></li>
+                <li><a href="/issues/">Issues</a></li>
+                <li><a href="/contact/">Contact</a></li>
+            </ul>
+        </nav>
+        <a href="/login/"><button>Logout</button></a>
+    </footer>
+</body>
+</html>

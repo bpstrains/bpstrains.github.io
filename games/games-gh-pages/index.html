@@ -4,9 +4,20 @@
         <meta charset="utf-8" />
         <title>HTML5 Games</title>
         <link rel="stylesheet" href="style.css" />
-        <script src="/main.js"></script>
+        <script>
+        document.onreadystatechange = function () {
+        var state = document.readyState
+        if (state == 'interactive') {
+             document.body.style.visibility="hidden";
+        } else if (state == 'complete') {
+            setTimeout(function(){
+               document.body.style.visibility="visible";
+            },1000);
+        }}
+    </script>
+    <script src="/main.js"></script>
     </head>
-    <body>
+    <body style="visibility: hidden;">
         <header>
             <h1 id="title">Bounce</h1>
             <p id="expand">Expand for more games.</p>

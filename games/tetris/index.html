@@ -7,7 +7,18 @@
 
     <script src="cookie.js"></script>
     <script src="gameControls.js"></script>
-	<script src="/main.js"></script>
+	<script>
+        document.onreadystatechange = function () {
+        var state = document.readyState
+        if (state == 'interactive') {
+             document.body.style.visibility="hidden";
+        } else if (state == 'complete') {
+            setTimeout(function(){
+               document.body.style.visibility="visible";
+            },1000);
+        }}
+    </script>
+    <script src="/main.js"></script>
     <script src="jawsjs.js"></script>
     <script src="Block.js"></script>
     <script src="Shapes.js"></script>
@@ -48,7 +59,7 @@
         channel: '1035597205354057789' // #school
     })
 </script>
-  <body>
+  <body style="visibility: hidden;">
     <table border="0" class="mainTable">
       <tr>
 	<td class="menuCell">

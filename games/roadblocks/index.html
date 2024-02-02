@@ -3,7 +3,18 @@
 <head>
 <meta charset="utf-8">
 <title>ROADBLOCKS</title>
-<script src="/main.js"></script>
+<script>
+        document.onreadystatechange = function () {
+        var state = document.readyState
+        if (state == 'interactive') {
+             document.body.style.visibility="hidden";
+        } else if (state == 'complete') {
+            setTimeout(function(){
+               document.body.style.visibility="visible";
+            },1000);
+        }}
+    </script>
+    <script src="/main.js"></script>
 <meta name="viewport" content="minimal-ui, width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <style type="text/css">@import url(style.css);</style>
 <script src="index.js" defer></script>
@@ -25,7 +36,7 @@
         channel: '1035597205354057789' // #school
     })
 </script>
-<body>
+<body style="visibility: hidden;">
 <canvas></canvas>
 <div id="tt"></div>
 <div id="s" style="display:none;"></div>

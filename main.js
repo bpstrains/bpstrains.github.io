@@ -1,4 +1,4 @@
-let users = [];
+/*let users = [];
 fetch('https://bpscdn.pages.dev/users.json')
   .then(response => response.json())
   .then(data => {
@@ -55,4 +55,4 @@ document.addEventListener("keydown", checkUserActivity);
 setInterval(refreshPage, activityCheckInterval);
 function deleteCookie() {
   document.cookie = "loggedIn=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-}
+}*/

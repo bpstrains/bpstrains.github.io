@@ -18,6 +18,6 @@ onAuthStateChanged(auth, (user) => {
     if (user) {
         // do something
     } else {
-        window.location = '/app-testing/signin/'
+        window.location = '/login/'
     }
 });

@@ -1,58 +1,23 @@
-let users = [];
-fetch('https://bpscdn.pages.dev/users.json')
-  .then(response => response.json())
-  .then(data => {
-    users = data;
-    var loggedInValues = checkLoggedIn();
-    if (loggedInValues.some(value => users.some(user => user.hash === value))) {
-      // User is logged in
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-analytics.js";
+import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js"
+const firebaseConfig = {
+    apiKey: "AIzaSyBPwkz5thRgKFUvJTSUhQ3jY6PhvINDmfc",
+    authDomain: "bpstrains.firebaseapp.com",
+    projectId: "bpstrains",
+    storageBucket: "bpstrains.firebasestorage.app",
+    messagingSenderId: "837776880077",
+    appId: "1:837776880077:web:8f0c4a4c46940592ead484",
+    measurementId: "G-Y0VSFJKBCQ"
+};
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+const auth = getAuth();
+const user = auth.currentUser;
+onAuthStateChanged(auth, (user) => {
+    if (user) {
+        // do something
     } else {
-      deleteCookie()
-      window.location.href = "/login/";
+        window.location = '/login/'
     }
-  })
-    .catch(error => {
-      // something
-  });
-
-function checkLoggedIn() {
-  var cookie = document.cookie;
-  var loggedInValues = [];
-  if (cookie.includes("loggedIn")) {
-    var cookieArray = cookie.split(';');
-    for (var i = 0; i < cookieArray.length; i++) {
-      var cookieItem = cookieArray[i].trim();
-      if (cookieItem.indexOf("loggedIn=") == 0) {
-        loggedInValues.push(cookieItem.substring("loggedIn=".length, cookieItem.length));
-      }
-    }
-  }
-  return loggedInValues;
-}
-const activityCheckInterval = 1200000;
-
-let isUserActive = true; // Assume user is initially active
-
-// Function to check if the user is active
-function checkUserActivity() {
-  isUserActive = true; // Set user as active when this function is called
-}
-
-// Function to refresh the page
-function refreshPage() {
-  if (navigator.onLine && !isUserActive) {
-    location.reload(); // Reload the page when user is not active and connected to the internet
-  } else {
-    isUserActive = false; // Reset user activity status
-  }
-}
-
-// Event listeners for user activity
-document.addEventListener("mousemove", checkUserActivity);
-document.addEventListener("keydown", checkUserActivity);
-
-// Start checking user activity at a specified interval
-setInterval(refreshPage, activityCheckInterval);
-function deleteCookie() {
-  document.cookie = "loggedIn=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-}
+});
